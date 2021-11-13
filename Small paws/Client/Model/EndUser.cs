@@ -2,8 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace Client.Model
 {
-    public class AuthRequest
+    public class EndUser
     {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
         
         [JsonPropertyName("userName")]
         public string Username { get; set; }
@@ -12,8 +14,5 @@ namespace Client.Model
 
         public string Password { get; set; }
         
-        [JsonPropertyName("role")]
-
-        public string Role { get; set; }
     }
 }

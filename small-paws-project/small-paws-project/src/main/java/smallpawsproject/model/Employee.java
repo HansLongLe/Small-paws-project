@@ -7,22 +7,20 @@ import javax.persistence.*;
 
 
 @Entity
-public class Employee
+public class Employee extends EndUser
 {
-  @Id
-  @GeneratedValue
-  private int id;
+  private static final long serialVersionUID = 663126647076776891L;
   private role role;
   public enum role{Veterinarian, AnimalAttendant}
 
-  private Account account;
+
 
   public Employee(){};
 
   @JsonCreator
   public Employee(@JsonProperty("id") int id ,@JsonProperty("role") role userRole)
   {
-    this.id = id;
+    super(id);
 
     this.role = userRole;
   }
@@ -37,23 +35,4 @@ public class Employee
     this.role = role;
   }
 
-  public int getId()
-  {
-    return id;
-  }
-
-  public void setId(int id)
-  {
-    this.id = id;
-  }
-
-  public Account getAccount()
-  {
-    return account;
-  }
-
-  public void setAccount(Account account)
-  {
-    this.account = account;
-  }
 }

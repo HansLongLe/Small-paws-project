@@ -1,16 +1,10 @@
 package smallpawsproject.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import smallpawsproject.model.Account;
-import smallpawsproject.securityjwt.http.AuthRequest;
-import smallpawsproject.securityjwt.http.AuthResponse;
-import smallpawsproject.securityjwt.http.AuthResponseInterface;
+import smallpawsproject.model.EndUser;
 //import smallpawsproject.securityjwt.provider.JWTProvider;
 import smallpawsproject.services.*;
-
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class LogInController
@@ -21,18 +15,18 @@ public class LogInController
 //  private final PetOwnerService petOwnerService;
 //
   @Autowired
-  private AccountsService accountsService;
+  private UsersService usersService;
 
 
-  public LogInController(AccountsService accountsService)
+  public LogInController(UsersService usersService)
   {
-    this.accountsService = accountsService;
+    this.usersService = usersService;
   }
 
 
-  @PostMapping("/account")
+  @PostMapping("/User")
   @ResponseBody
-  public int login(@RequestBody Account account){
+  public int login(@RequestBody EndUser endUser){
 //    if(request.getRole().equals("PetOwner")){
 //      return petOwnerService.authenticatePetOwner(request.getUserName(),
 //          request.getPassword());
@@ -42,8 +36,8 @@ public class LogInController
 //          request.getPassword());
 //    }
 
-    return accountsService.checkAccount(account.getUserName(),
-        account.getPassword());
+    return usersService.checkAccount(endUser.getUserName(),
+        endUser.getPassword());
     }
   }
 

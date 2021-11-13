@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Employee extends EndUser
 {
+  private static final long serialVersionUID = 663126647076776891L;
   private role role;
   public enum role{Veterinarian, AnimalAttendant}
 

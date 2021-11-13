@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class EndUser implements Serializable
 {
+  private static final long serialVersionUID = 663126647076776891L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int userId;

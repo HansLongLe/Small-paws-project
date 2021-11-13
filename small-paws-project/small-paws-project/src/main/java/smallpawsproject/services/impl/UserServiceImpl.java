@@ -1,22 +1,22 @@
 package smallpawsproject.services.impl;
 
 import org.springframework.stereotype.Service;
-import smallpawsproject.model.Account;
+import smallpawsproject.model.EndUser;
 import smallpawsproject.rmi.ClientFactory;
 import smallpawsproject.rmi.ClientRMI;
-import smallpawsproject.services.AccountsService;
+import smallpawsproject.services.UsersService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.rmi.RemoteException;
 import java.util.List;
 @Service
-public class AccountServiceImpl implements AccountsService
+public class UserServiceImpl implements UsersService
 {
   ClientFactory clientFactory;
   ClientRMI client;
-  List<Account> accounts;
+  List<EndUser> endUsers;
 
-  public AccountServiceImpl(ClientFactory clientFactory)
+  public UserServiceImpl(ClientFactory clientFactory)
   {
     this.clientFactory = clientFactory;
     client = clientFactory.getClient();
@@ -30,7 +30,7 @@ public class AccountServiceImpl implements AccountsService
     }
     try
     {
-      accounts = client.getAccounts();
+      endUsers = client.getUsers();
     }
     catch (RemoteException e)
     {
@@ -42,12 +42,12 @@ public class AccountServiceImpl implements AccountsService
   @Override public int checkAccount(String userName, String password)
   {
     int answer = 0;
-        for(Account account : accounts){
-          if (account.getUserName().equals(userName) && account.getPassword()
+        for(EndUser endUser : endUsers){
+          if (endUser.getUserName().equals(userName) && endUser.getPassword()
               .equals(password))
           {
-            System.out.println(account.getUserName());
-            System.out.println(account.getPassword());
+            System.out.println(endUser.getUserName());
+            System.out.println(endUser.getPassword());
             answer = HttpServletResponse.SC_ACCEPTED;
             break;
           }

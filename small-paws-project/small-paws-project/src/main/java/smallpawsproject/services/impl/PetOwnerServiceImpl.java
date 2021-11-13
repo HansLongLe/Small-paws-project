@@ -54,7 +54,7 @@ public class PetOwnerServiceImpl implements PetOwnerService
     try
     {
       petOwners = client.getPetOwners();
-      System.out.println(petOwners.get(0).getUserName());
+
     }
     catch (RemoteException e)
     {

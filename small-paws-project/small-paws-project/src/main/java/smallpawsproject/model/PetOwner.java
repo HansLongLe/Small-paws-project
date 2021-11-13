@@ -4,15 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 
 @Entity
-public class PetOwner implements Serializable
+public class PetOwner extends EndUser
 {
   private static final long serialVersionUID = 663126647076776891L;
 
-  @Id
-  private int id;
   private String firstName;
   private String lastName;
   private int age;
@@ -21,11 +19,7 @@ public class PetOwner implements Serializable
   private int avgIncome;
   private String address;
   private String JobTitle;
-  private String userName;
-  private String password;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  private Account account;
 
   public PetOwner(){}
 
@@ -34,9 +28,7 @@ public class PetOwner implements Serializable
   public PetOwner(@JsonProperty("id") int id,@JsonProperty("firstName") String firstName,@JsonProperty("lastName") String lastName,@JsonProperty("age") int age,@JsonProperty("sex") String sex,
       @JsonProperty("familyStatus") String familyStatus,@JsonProperty("avgIncome") int avgIncome,@JsonProperty("address") String address,@JsonProperty("jobTitle") String jobTitle, @JsonProperty("userName") String userName, @JsonProperty("password") String password)
   {
-    this.id = id;
-    this.userName = userName;
-    this.password = password;
+    super(id, userName, password);
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
@@ -45,7 +37,6 @@ public class PetOwner implements Serializable
     this.avgIncome = avgIncome;
     this.address = address;
     JobTitle = jobTitle;
-    this.account = new Account(id , userName, password);
   }
 
   public String getAddress()
@@ -58,25 +49,6 @@ public class PetOwner implements Serializable
     this.address = address;
   }
 
-  public String getUserName()
-  {
-    return userName;
-  }
-
-  public void setUserName(String userName)
-  {
-    this.userName = userName;
-  }
-
-  public String getPassword()
-  {
-    return password;
-  }
-
-  public void setPassword(String password)
-  {
-    this.password = password;
-  }
 
   public String getFirstName()
   {
@@ -139,12 +111,6 @@ public class PetOwner implements Serializable
   }
 
 
-
-  public void setAdress(String adress)
-  {
-    this.address = adress;
-  }
-
   public String getJobTitle()
   {
     return JobTitle;
@@ -155,23 +121,4 @@ public class PetOwner implements Serializable
     JobTitle = jobTitle;
   }
 
-  public int getId()
-  {
-    return id;
-  }
-
-  public void setId(int id)
-  {
-    this.id = id;
-  }
-
-  public Account getAccount()
-  {
-    return account;
-  }
-
-  public void setAccount(Account account)
-  {
-    this.account = account;
-  }
 }

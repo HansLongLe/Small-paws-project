@@ -28,7 +28,7 @@ public class ServerImpl implements Server
     return dataAccess.getPetOwners();
   }
 
-  @Override public List<EndUser> getAccounts() throws RemoteException
+  @Override public List<EndUser> getUsers() throws RemoteException
   {
     return dataAccess.getUsers();
   }

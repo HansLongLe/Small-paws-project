@@ -21,7 +21,7 @@ public class CreateAccountController
   }
 
   //public route(without being authorized by spring)
-  @PostMapping("/newAccount")
+  @PostMapping("/newUser")
   @ResponseBody
   public int registerPetOwner(@RequestBody PetOwner petOwner){
     System.out.println("Registering pet owner");

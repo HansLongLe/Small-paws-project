@@ -14,7 +14,7 @@ public interface Server extends Remote
   //  public static final String T3_SERVICE_NAME = "rmi://localhost/T3";
   void registerPetOwner(PetOwner petOwner) throws RemoteException;
   List<PetOwner> getPetOwners() throws RemoteException;
-  List<EndUser> getAccounts() throws RemoteException;
+  List<EndUser> getUsers() throws RemoteException;
 
 
 }

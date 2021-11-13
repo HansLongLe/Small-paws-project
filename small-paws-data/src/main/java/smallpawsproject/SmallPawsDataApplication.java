@@ -3,6 +3,7 @@ package smallpawsproject;
 import smallpawsproject.dataaccess.DataAccess;
 import smallpawsproject.dataaccess.DataAccessImpl;
 import smallpawsproject.model.Employee;
+import smallpawsproject.model.PetOwner;
 import smallpawsproject.repositories.UsersRepository;
 import smallpawsproject.repositories.EmployeeRepository;
 import smallpawsproject.rmi.Server;
@@ -37,6 +38,9 @@ public class SmallPawsDataApplication {
 		Employee emp = new Employee( "Mary", "pass", Employee.role.Veterinarian);
 		employeeRepository.save(emp);
 		System.out.println(emp);
+
+		PetOwner petOwner = new PetOwner(12, "Jan", "Le", 20, "M", "Single", 30000, "Horsens", "Student", "Flamerec", "1234");
+		petOwnerRepository.save(petOwner);
 
 	}
 

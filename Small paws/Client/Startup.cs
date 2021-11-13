@@ -1,9 +1,7 @@
-using System.Collections;
 using Client.Data;
 using Client.Data.Registration;
 using Client.Data.Validation;
 using Client.Model;
-using Client.Pages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +28,7 @@ namespace Client
             services.AddSingleton<IDataLoader, CloudDataLoader>();
             services.AddSingleton<IUserLogInServices, CloudUserLogInServices>();
             services.AddSingleton<IUserCreateAccountServices, CloudUserCreateAccountServices>();
-            services.AddSingleton<AuthRequest>();
+            services.AddSingleton<EndUser>();
             // services.AddScoped<IList, >();
         }
 

@@ -1,9 +1,8 @@
 package smallpawsproject.rmi;
 
-import smallpawsproject.model.Account;
+import smallpawsproject.model.EndUser;
 import smallpawsproject.model.PetOwner;
 
-import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -16,5 +15,5 @@ public interface Server extends Remote
   void registerPetOwner(PetOwner petOwner) throws RemoteException;
 
   List<PetOwner> getPetOwners() throws RemoteException;
-  List<Account> getAccounts() throws RemoteException;
+  List<EndUser> getUsers() throws RemoteException;
 }
