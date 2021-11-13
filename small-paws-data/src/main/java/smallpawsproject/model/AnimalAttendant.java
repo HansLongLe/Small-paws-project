@@ -16,5 +16,4 @@ public class AnimalAttendant extends Employee
   }
   public AnimalAttendant(){}
 
-
 }

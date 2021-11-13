@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 public class Employee extends EndUser
 {
-  private int id;
   private role role;
   public enum role{Veterinarian, AnimalAttendant}
 
