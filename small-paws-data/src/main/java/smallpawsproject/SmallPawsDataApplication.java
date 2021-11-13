@@ -49,7 +49,7 @@ public class SmallPawsDataApplication {
 
 	@Bean RmiServiceExporter exporter(Server implementation){
 		Class<Server> serverInterface = Server.class;
-		RmiServiceExporter exporter = new RmiServiceExporter();
+		var exporter = new RmiServiceExporter();
 		exporter.setServiceInterface(serverInterface);
 		exporter.setService(implementation);
 		exporter.setServiceName("ServerTier3");
