@@ -18,18 +18,7 @@ namespace Client.Data.Registration
             _httpClient = new HttpClient();
         }
 
-        public async Task<IList<EndUser>> getUsersAsync()
-        {
-            var responseMessage = await _httpClient.GetAsync(Uri + "/users");
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new Exception("Ups something went wrong");
-            }
-
-            var message = await responseMessage.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<List<EndUser>>(message);
-            return result;
-        }
+  
 
         public async Task<int> checkUserName(string userName)
         {
