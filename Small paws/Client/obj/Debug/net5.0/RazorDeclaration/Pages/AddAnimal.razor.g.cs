@@ -82,6 +82,13 @@ using Client.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\_Imports.razor"
+using Client.Pages;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/AddAnimal")]
     public partial class AddAnimal : AddAnimalRazor
     {

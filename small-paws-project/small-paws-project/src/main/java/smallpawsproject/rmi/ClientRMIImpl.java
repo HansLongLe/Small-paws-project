@@ -1,6 +1,7 @@
 package smallpawsproject.rmi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import smallpawsproject.model.AdoptRequest;
 import smallpawsproject.model.Animal;
 import smallpawsproject.model.EndUser;
 import smallpawsproject.model.PetOwner;
@@ -71,6 +72,16 @@ public class ClientRMIImpl extends UnicastRemoteObject implements ClientRMI
   @Override
   public Animal updateAnimal(Animal animal) throws RemoteException {
     return server.updateAnimal(animal);
+  }
+
+  @Override
+  public void newAdoptRequest(AdoptRequest adoptRequest) throws RemoteException {
+    server.newAdoptRequest(adoptRequest);
+  }
+
+  @Override
+  public List<AdoptRequest> getAdoptRequests() throws RemoteException {
+    return server.getAdoptRequests();
   }
 
 }

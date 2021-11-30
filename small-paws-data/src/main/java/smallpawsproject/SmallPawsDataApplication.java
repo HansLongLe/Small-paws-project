@@ -1,9 +1,9 @@
 package smallpawsproject;
 
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import smallpawsproject.data_access.DataAccess;
 import smallpawsproject.data_access.DataAccessImpl;
 import smallpawsproject.model.EndUser;
+import smallpawsproject.repositories.AdoptRequestRepository;
 import smallpawsproject.repositories.AnimalRepository;
 import smallpawsproject.repositories.UsersRepository;
 import smallpawsproject.rmi.Server;
@@ -25,15 +25,17 @@ public class SmallPawsDataApplication {
 		private final PetOwnerRepository petOwnerRepository;
 		private final UsersRepository usersRepository;
 		private final AnimalRepository animalRepository;
+		private final AdoptRequestRepository adoptRequestRepository;
 
 		private ServiceFactory serviceFactory;
 		private DataAccess dataAccess;
 
-	public SmallPawsDataApplication(PetOwnerRepository petOwnerRepository, UsersRepository usersRepository, AnimalRepository animalRepository){
+	public SmallPawsDataApplication(PetOwnerRepository petOwnerRepository, UsersRepository usersRepository, AnimalRepository animalRepository, AdoptRequestRepository adoptRequestRepository){
 		this.petOwnerRepository = petOwnerRepository;
 		this.usersRepository = usersRepository;
 		this.animalRepository = animalRepository;
-		serviceFactory = new ServiceFactory(petOwnerRepository, usersRepository, animalRepository);
+		this.adoptRequestRepository = adoptRequestRepository;
+		serviceFactory = new ServiceFactory(petOwnerRepository, usersRepository, animalRepository, adoptRequestRepository);
 		dataAccess = new DataAccessImpl(serviceFactory);
 
 //		for(int i=1; i<usersRepository.count(); i++){

@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Client.Data.Validation;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Client.Authentication;
+using Client.Services.Validation;
 using Microsoft.AspNetCore.Components.Web;
 
 
 namespace Client.Pages
 {
     public class LoginRazor : ComponentBase
-    {
+    { 
         [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private AuthenticationStateProvider AuthenticationStateProvider{ get; set; }
+        [Inject] private AuthenticationStateProvider AuthenticationStateProvider{ get; set; }
+        [Inject] private IUserLogInService UserLogInService { get; set; }
     
 
     protected string Username;
     protected string Password;
-    protected string errorMessage;
+    protected string ErrorMessage;
 
     protected async Task LoadMainPage()
     {
-        errorMessage = "";
+        ErrorMessage = "";
 
         try
         {
@@ -30,7 +31,7 @@ namespace Client.Pages
         }
         catch (Exception e)
         {
-            errorMessage = "Username or Password are incorrect. Please, Try again.";
+            ErrorMessage = "Username or Password are incorrect. Please, Try again.";
         }
 
     }

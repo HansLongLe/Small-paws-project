@@ -188,6 +188,33 @@ th[b-41e580qbhe], td[b-41e580qbhe] {
     width: 100%;
 }
 
+/* _content/Client/Pages/AdoptRequestList.razor.rz.scp.css */
+
+table[b-7b4rqw7s97]{
+    width: 100%;
+}
+tr:nth-child(even)[b-7b4rqw7s97] {
+    background-color: #f2f2f2;
+}
+
+th[b-7b4rqw7s97], td[b-7b4rqw7s97] {
+    padding: 2%;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+.AcceptReject[b-7b4rqw7s97]{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.accept[b-7b4rqw7s97]{
+    height: 100%;
+}
+.reject[b-7b4rqw7s97]{
+    height: 100%;
+}
 /* _content/Client/Pages/CreateAccountDetails.razor.rz.scp.css */
 
 ul[b-sto1q7iszl], li[b-sto1q7iszl] {
@@ -1127,7 +1154,7 @@ th[b-fi7r9zgcga]{
 
 /*Button styling*/
 
-button[b-s0je6xt4tp] {
+.login-btn[b-s0je6xt4tp] {
     outline: none !important;
     border: none;
     background: transparent;
@@ -1297,6 +1324,7 @@ th[b-s0je6xt4tp], td[b-s0je6xt4tp] {
     width: 100%;
 }
 
+
 /* _content/Client/Shared/LoginCreateAccountLayout.razor.rz.scp.css */
 .page[b-blai4qmvh7]{
     background: linear-gradient(225deg, rgba(255,0,172,1) 0%, rgba(69,23,142,1) 50%, rgba(0,212,255,1) 100%);
@@ -1439,4 +1467,11 @@ th[b-s0je6xt4tp], td[b-s0je6xt4tp] {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
+}
+.nav-item[b-kd1ih0s86n]{
+    cursor: pointer;
+}
+.navbar-brand[b-kd1ih0s86n]{
+    cursor: pointer;
+    color: white !important;
 }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Client.Model;
 
-namespace Client.Data.Validation
+namespace Client.Services.Validation
 {
     public interface IUserLogInService
     {

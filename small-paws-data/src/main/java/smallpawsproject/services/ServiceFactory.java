@@ -1,5 +1,6 @@
 package smallpawsproject.services;
 
+import smallpawsproject.repositories.AdoptRequestRepository;
 import smallpawsproject.repositories.AnimalRepository;
 import smallpawsproject.repositories.UsersRepository;
 import smallpawsproject.repositories.PetOwnerRepository;
@@ -18,12 +19,15 @@ public class ServiceFactory
   private final UsersRepository usersRepository;
   private final PetOwnerRepository petOwnerRepository;
   private final AnimalRepository animalRepository;
-  public ServiceFactory(PetOwnerRepository petOwnerRepository, UsersRepository usersRepository, AnimalRepository animalRepository)
+  private final AdoptRequestRepository adoptRequestRepository;
+
+  public ServiceFactory(PetOwnerRepository petOwnerRepository, UsersRepository usersRepository, AnimalRepository animalRepository, AdoptRequestRepository adoptRequestRepository)
   {
     this.petOwnerRepository = petOwnerRepository;
     this.usersRepository = usersRepository;
     this.animalRepository = animalRepository;
 
+    this.adoptRequestRepository = adoptRequestRepository;
   }
   public UsersService getUserService(){
     if(usersService ==null){
@@ -44,7 +48,7 @@ public class ServiceFactory
   public AnimalService getAnimalService() {
     if (animalService==null)
     {
-      animalService = new AnimalServiceImpl(animalRepository);
+      animalService = new AnimalServiceImpl(animalRepository, adoptRequestRepository);
     }
     return animalService;
   }

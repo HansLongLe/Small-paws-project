@@ -60,3 +60,10 @@
         display: block;
     }
 }
+.nav-item{
+    cursor: pointer;
+}
+.navbar-brand{
+    cursor: pointer;
+    color: white !important;
+}

@@ -14,7 +14,7 @@
 
 /*Button styling*/
 
-button {
+.login-btn {
     outline: none !important;
     border: none;
     background: transparent;
@@ -183,4 +183,5 @@ th, td {
     height: 50%;
     width: 100%;
 }
+
 

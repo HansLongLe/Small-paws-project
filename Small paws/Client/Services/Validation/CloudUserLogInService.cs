@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Client.Model;
 
-namespace Client.Data.Validation
+namespace Client.Services.Validation
 {
     public class CloudUserLogInService : IUserLogInService
     {
@@ -42,7 +42,6 @@ namespace Client.Data.Validation
 
             var message = await responseMessage.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<EndUser>(message);
-            Console.WriteLine(result.GetType().ToString() + "HERE!!!!!!!!!!!!!!!!!!!!");
             return result;
         }
     }

@@ -1,0 +1,70 @@
+@page "/AdoptRequestList"
+@using Client.Model
+@using Client.Authentication
+@inherits AdoptRequestListRazor
+@inject AuthenticationStateProvider _authenticationStateProvider
+
+<AuthorizeView Policy="MustBeVeterinarian">
+    <table>
+        <tr>
+            <th>Request ID</th>
+            <th>Pet owner ID</th>
+            <th>Animal ID</th>
+            <th>Date</th>
+            <th>Animal type</th>
+            <th>Animal name</th>
+            <th>Status</th>
+        </tr>
+    
+        @if (AdoptRequests != null)
+        {
+            @for (int i = 0; i < AdoptRequests.Count; i++)
+            {
+                if (AdoptRequests[i].Approved == null)
+                {
+                    <tr>
+                        <td>@AdoptRequests[i].RequestId</td>
+                        <td>@AdoptRequests[i].UserId</td>
+                        <td>@AdoptRequests[i].AnimalId</td>
+                        <td>@AdoptRequests[i].Date</td>
+                        <td>@AdoptRequests[i].AnimalType</td>
+                        <td>@AdoptRequests[i].AnimalName</td>
+                        <td class="AcceptReject"><td class = "accept"><i class="fas fa-check" @onclick="AcceptRequest"></i></td><td class="reject"><i class="fas fa-times" @onclick="RejectRequest"></i></td></td>
+                    </tr>
+                }
+            }
+        }        
+    </table>
+</AuthorizeView>
+<AuthorizeView Policy="MustBePetOwner">
+    <table>
+        <tr>
+            <th>Request ID</th>
+            <th>Veterinarian ID</th>
+            <th>Animal ID</th>
+            <th>Date</th>
+            <th>Animal type</th>
+            <th>Animal name</th>
+            <th>Status</th>
+        </tr>
+    
+        @if (AdoptRequests != null)
+        {
+            @for (var i = 0; i < AdoptRequests.Count; i++)
+            {
+                if (((CustomAuthenticationStateProvider)_authenticationStateProvider).GetCachedUser().Id == AdoptRequests[i].UserId)
+                {
+                    <tr>
+                        <td>@AdoptRequests[i].RequestId</td>
+                        <td>@AdoptRequests[i].VeterinarianId</td>
+                        <td>@AdoptRequests[i].AnimalId</td>
+                        <td>@AdoptRequests[i].Date</td>
+                        <td>@AdoptRequests[i].AnimalType</td>
+                        <td>@AdoptRequests[i].AnimalName</td>
+                        <td>@StatusText[i]</td>
+                    </tr>
+                }
+            }
+        }        
+    </table>
+</AuthorizeView>

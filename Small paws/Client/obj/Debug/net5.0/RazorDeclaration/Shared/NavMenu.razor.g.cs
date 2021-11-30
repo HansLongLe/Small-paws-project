@@ -82,6 +82,20 @@ using Client.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\_Imports.razor"
+using Client.Pages;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 1 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\Shared\NavMenu.razor"
+using Client.Authentication;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -90,15 +104,23 @@ using Client.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 27 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\Shared\NavMenu.razor"
+#line 42 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\Shared\NavMenu.razor"
        
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+    
     private bool _collapseNavMenu = true;
-
+    
     private string NavMenuCssClass => _collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
         _collapseNavMenu = !_collapseNavMenu;
+    }
+
+    private void LoadMainPage()
+    {
+        NavigationManager.NavigateTo("ViewAnimals");
     }
 
 

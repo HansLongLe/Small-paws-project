@@ -1,0 +1,26 @@
+
+table[b-7b4rqw7s97]{
+    width: 100%;
+}
+tr:nth-child(even)[b-7b4rqw7s97] {
+    background-color: #f2f2f2;
+}
+
+th[b-7b4rqw7s97], td[b-7b4rqw7s97] {
+    padding: 2%;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+.AcceptReject[b-7b4rqw7s97]{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.accept[b-7b4rqw7s97]{
+    height: 100%;
+}
+.reject[b-7b4rqw7s97]{
+    height: 100%;
+}

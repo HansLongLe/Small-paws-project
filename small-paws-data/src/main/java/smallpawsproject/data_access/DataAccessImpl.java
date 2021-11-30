@@ -1,5 +1,6 @@
 package smallpawsproject.data_access;
 
+import smallpawsproject.model.AdoptRequest;
 import smallpawsproject.model.EndUser;
 import smallpawsproject.model.Animal;
 import smallpawsproject.model.PetOwner;
@@ -48,5 +49,15 @@ public class DataAccessImpl implements DataAccess
   @Override
   public Animal updateAnimal(Animal animal) {
     return serviceFactory.getAnimalService().updateAnimal(animal);
+  }
+
+  @Override
+  public void newAdoptRequest(AdoptRequest adoptRequest) {
+    serviceFactory.getAnimalService().newAdoptRequest(adoptRequest);
+  }
+
+  @Override
+  public List<AdoptRequest> getAdoptRequests() {
+    return serviceFactory.getAnimalService().getAdoptRequests();
   }
 }

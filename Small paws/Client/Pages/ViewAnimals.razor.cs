@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Client.Data;
+using Client.Services;
 using Client.Model;
+using Client.Services;
 using Microsoft.AspNetCore.Components;
 
 namespace Client.Pages
 {
     public class ViewAnimalsRazor :ComponentBase
     {
+        [Parameter]
+        public string ValueOfUser { get; set; }
         protected IList<Animal> Animals { get; private set; }
         [Inject] protected IAnimalService AnimalService { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
@@ -51,7 +54,7 @@ namespace Client.Pages
 
         protected void OpenSpecificAnimal(int i)
         {
-            NavigationManager.NavigateTo($"ViewSpecificAnimal/{i}");
+            NavigationManager.NavigateTo($"ViewSpecificAnimal/{i}/{ValueOfUser}");
         }
 
         protected void OpenEditSpecificAnimal(int i)

@@ -83,6 +83,13 @@ using Client.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\_Imports.razor"
+using Client.Pages;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\Vosta\OneDrive\Documents\GitHub\Small-paws-project\Small paws\Client\Pages\CreateAccountMain.razor"
 using Client.Model;
 

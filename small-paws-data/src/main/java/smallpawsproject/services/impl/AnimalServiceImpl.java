@@ -1,7 +1,9 @@
 package smallpawsproject.services.impl;
 
 import org.hibernate.Session;
+import smallpawsproject.model.AdoptRequest;
 import smallpawsproject.model.Animal;
+import smallpawsproject.repositories.AdoptRequestRepository;
 import smallpawsproject.repositories.AnimalRepository;
 import smallpawsproject.services.AnimalService;
 
@@ -10,8 +12,10 @@ import java.util.List;
 public class AnimalServiceImpl implements AnimalService {
 
     private final AnimalRepository animalRepository;
-    public AnimalServiceImpl(AnimalRepository animalRepository) {
+    private final AdoptRequestRepository adoptRequestRepository;
+    public AnimalServiceImpl(AnimalRepository animalRepository, AdoptRequestRepository adoptRequestRepository) {
         this.animalRepository = animalRepository;
+        this.adoptRequestRepository = adoptRequestRepository;
     }
     @Override public void addAnimal(Animal animal){
         animalRepository.save(animal);
@@ -30,5 +34,15 @@ public class AnimalServiceImpl implements AnimalService {
         return temp;
 
 
+    }
+
+    @Override
+    public void newAdoptRequest(AdoptRequest adoptRequest) {
+        adoptRequestRepository.save(adoptRequest);
+    }
+
+    @Override
+    public List<AdoptRequest> getAdoptRequests() {
+        return adoptRequestRepository.findAll();
     }
 }

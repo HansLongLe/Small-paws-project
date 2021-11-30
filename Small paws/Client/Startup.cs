@@ -1,10 +1,10 @@
 using System.Collections;
 using Client.Authentication;
-using Client.Data;
-using Client.Data.Registration;
-using Client.Data.Validation;
 using Client.Model;
 using Client.Pages;
+using Client.Services;
+using Client.Services.Registration;
+using Client.Services.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +34,7 @@ namespace Client
             services.AddSingleton<IUserCreateAccountService, CloudUserCreateAccountService>();
             services.AddSingleton<EndUser>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            
 
             services.AddAuthorization(options =>
             {

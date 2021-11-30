@@ -6,6 +6,7 @@ import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import smallpawsproject.model.AdoptRequest;
 import smallpawsproject.model.Animal;
 import smallpawsproject.rmi.ClientFactory;
 import smallpawsproject.rmi.ClientRMI;
@@ -62,6 +63,48 @@ public class AnimalServicesImpl implements AnimalServices
       e.printStackTrace();
     }
     return null;
+  }
+
+  @Override
+  public void newAdoptRequest(AdoptRequest adoptRequest)
+  {
+    try
+    {
+      client.newAdoptRequest(adoptRequest);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public JSONArray getAdoptRequests() {
+    var adoptRequestAsJson = new JSONArray();
+
+    try {
+
+      var listOfAdoptRequests = client.getAdoptRequests();
+
+      for (var adoptRequest : listOfAdoptRequests)
+      {
+        var jsonObject = new JSONObject();
+        jsonObject.put("requestId", adoptRequest.getRequestId());
+        jsonObject.put("userId", adoptRequest.getUserId());
+        jsonObject.put("animalId", adoptRequest.getAnimalId());
+        jsonObject.put("date", adoptRequest.getDate());
+        jsonObject.put("animalType", adoptRequest.getAnimalType());
+        jsonObject.put("animalName", adoptRequest.getAnimalName() );
+        jsonObject.put("veterinarianId", adoptRequest.getVeterinarianId());
+        jsonObject.put("approved", adoptRequest.isApproved());
+        adoptRequestAsJson.add(jsonObject);
+      }
+
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+    return adoptRequestAsJson;
+
   }
 
   @Override public JSONArray GetAnimals()

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Client.Model;
+using Client.Services.Registration;
 using Microsoft.AspNetCore.Components;
-using Client.Data.Registration;
-
 using Microsoft.AspNetCore.Components.Web;
 
 namespace Client.Pages
@@ -45,7 +44,7 @@ namespace Client.Pages
         protected async Task CheckUserName()
         {
             
-            if (await UserCreateAccountService.checkUserName(EndUser.UserName) ==403)
+            if (await UserCreateAccountService.CheckUserName(EndUser.UserName) ==403)
             {
                 userNameError = "Username already in use";
             }

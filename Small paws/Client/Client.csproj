@@ -23,6 +23,9 @@
         <DependentUpon>ViewAnimal.razor</DependentUpon>
       </None>
       <None Include="wwwroot\photo_picture.png" />
+      <None Update="Pages\AdopPopUpWindow.razor.css">
+        <DependentUpon>AdoptPopUpWindow.razor</DependentUpon>
+      </None>
     </ItemGroup>
 
 </Project>

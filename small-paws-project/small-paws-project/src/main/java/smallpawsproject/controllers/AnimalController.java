@@ -5,10 +5,12 @@ import net.minidev.json.JSONArray;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import smallpawsproject.model.AdoptRequest;
 import smallpawsproject.model.Animal;
 import smallpawsproject.services.AnimalServices;
 
@@ -56,5 +58,19 @@ public class AnimalController
   {
     System.out.println("Animals are out");
     return animalServices.GetAnimals();
+  }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/adoptRequest")
+  @ResponseBody
+  public void NewAdoptRequest(@RequestBody AdoptRequest adoptRequest)
+  {
+    animalServices.newAdoptRequest(adoptRequest);
+  }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/adoptRequestList")
+  @ResponseBody
+  public JSONArray GetAdoptRequests()
+  {
+    return animalServices.getAdoptRequests();
   }
 }
