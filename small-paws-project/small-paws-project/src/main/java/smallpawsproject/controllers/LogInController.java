@@ -19,12 +19,6 @@ public class LogInController
 private UsersService usersService;
 
 
-
-
-
-
-
-
   @PostMapping("/account")
   @ResponseBody
   public EndUser login(@RequestBody EndUser endUser){

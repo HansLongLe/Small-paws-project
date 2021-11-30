@@ -1,6 +1,7 @@
 package smallpawsproject.rmi;
 
 import smallpawsproject.data_access.DataAccess;
+import smallpawsproject.model.AdoptRequest;
 import smallpawsproject.model.Animal;
 import smallpawsproject.model.EndUser;
 import smallpawsproject.model.PetOwner;
@@ -47,5 +48,15 @@ public class ServerImpl implements Server
   @Override
   public Animal updateAnimal(Animal animal) throws RemoteException {
     return dataAccess.updateAnimal(animal);
+  }
+
+  @Override
+  public void newAdoptRequest(AdoptRequest adoptRequest) throws RemoteException {
+    dataAccess.newAdoptRequest(adoptRequest);
+  }
+
+  @Override
+  public List<AdoptRequest> getAdoptRequests() throws RemoteException {
+    return dataAccess.getAdoptRequests();
   }
 }
