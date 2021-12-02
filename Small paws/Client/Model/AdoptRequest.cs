@@ -26,7 +26,7 @@ namespace Client.Model
         [JsonPropertyName("veterinarianId")]
         public int VeterinarianId { get; set; }
         
-        [JsonPropertyName("approved")]
+       [JsonPropertyName("approved")]
         public bool? Approved { get; set; }
     }
 }

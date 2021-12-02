@@ -52,17 +52,16 @@ public class AnimalServicesImpl implements AnimalServices
     }
   }
 
-  @Override public Animal updateAnimal(Animal animal)
+  @Override public void updateAnimal(Animal animal)
   {
     try
     {
-      return client.updateAnimal(animal);
+      client.updateAnimal(animal);
     }
     catch (RemoteException e)
     {
       e.printStackTrace();
     }
-    return null;
   }
 
   @Override
@@ -105,6 +104,15 @@ public class AnimalServicesImpl implements AnimalServices
     }
     return adoptRequestAsJson;
 
+  }
+
+  @Override
+  public void updateAdoptRequest(AdoptRequest adoptRequest) {
+    try {
+      client.updateAdoptRequest(adoptRequest);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override public JSONArray GetAnimals()

@@ -3,12 +3,16 @@ package smallpawsproject.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Date;
 
+@Transactional
+@Entity
 public class AdoptRequest implements Serializable {
     private static final long serialVersionUID = 663126647076776891L;
 

@@ -30,17 +30,18 @@ public class AnimalController
 
   @RequestMapping(method = RequestMethod.PATCH, value="/new_information")
   @ResponseBody
-//  public ResponseEntity<Animal> updateAnimal(@RequestBody Animal animal){
-  public Animal updateAnimal(@RequestBody Animal animal){
-
-    System.out.println("Updating animal");
-
-//    Animal temp = animalServices.updateAnimal(animal);
-
-//    return ResponseEntity.ok(animalServices.updateAnimal(animal));
-  return animalServices.updateAnimal(animal);
+  public void updateAnimal(@RequestBody Animal animal){
+      System.out.println(animal.getAnimalType());
+      animalServices.updateAnimal(animal);
   }
 
+  @RequestMapping(method = RequestMethod.PATCH, value = "/adoptRequestStatus")
+  @ResponseBody
+  public void updateAdoptRequest(AdoptRequest adoptRequest)
+  {
+    System.out.println(adoptRequest.getAnimalType());
+    animalServices.updateAdoptRequest(adoptRequest);
+  }
 
   @RequestMapping(method = RequestMethod.POST, value = "/animal")
   @ResponseBody
@@ -64,6 +65,7 @@ public class AnimalController
   @ResponseBody
   public void NewAdoptRequest(@RequestBody AdoptRequest adoptRequest)
   {
+    System.out.println(adoptRequest.getAnimalName());
     animalServices.newAdoptRequest(adoptRequest);
   }
 
@@ -73,4 +75,6 @@ public class AnimalController
   {
     return animalServices.getAdoptRequests();
   }
+
+
 }

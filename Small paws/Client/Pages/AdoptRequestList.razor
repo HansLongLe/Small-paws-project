@@ -18,24 +18,28 @@
     
         @if (AdoptRequests != null)
         {
-            @for (int i = 0; i < AdoptRequests.Count; i++)
+            @foreach(var adoptRequest in AdoptRequests)
             {
-                if (AdoptRequests[i].Approved == null)
+                if (adoptRequest.Approved == null)
                 {
                     <tr>
-                        <td>@AdoptRequests[i].RequestId</td>
-                        <td>@AdoptRequests[i].UserId</td>
-                        <td>@AdoptRequests[i].AnimalId</td>
-                        <td>@AdoptRequests[i].Date</td>
-                        <td>@AdoptRequests[i].AnimalType</td>
-                        <td>@AdoptRequests[i].AnimalName</td>
-                        <td class="AcceptReject"><td class = "accept"><i class="fas fa-check" @onclick="AcceptRequest"></i></td><td class="reject"><i class="fas fa-times" @onclick="RejectRequest"></i></td></td>
+                        <td>@adoptRequest.RequestId</td>
+                        <td>@adoptRequest.UserId</td>
+                        <td>@adoptRequest.AnimalId</td>
+                        <td>@adoptRequest.Date</td>
+                        <td>@adoptRequest.AnimalType</td>
+                        <td>@adoptRequest.AnimalName</td>
+                        <td class="AcceptReject">
+                            <td class="accept"><i class="fas fa-check" @onclick="() => AcceptRequest(adoptRequest)"></i></td>
+                            <td class="reject"><i class="fas fa-times" @onclick="() => RejectRequest(adoptRequest)"></i></td>
+                        </td>
                     </tr>
                 }
             }
         }        
     </table>
 </AuthorizeView>
+
 <AuthorizeView Policy="MustBePetOwner">
     <table>
         <tr>

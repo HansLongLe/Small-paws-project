@@ -46,8 +46,8 @@ public class ServerImpl implements Server
   }
 
   @Override
-  public Animal updateAnimal(Animal animal) throws RemoteException {
-    return dataAccess.updateAnimal(animal);
+  public void updateAnimal(Animal animal) throws RemoteException {
+    dataAccess.updateAnimal(animal);
   }
 
   @Override
@@ -58,5 +58,10 @@ public class ServerImpl implements Server
   @Override
   public List<AdoptRequest> getAdoptRequests() throws RemoteException {
     return dataAccess.getAdoptRequests();
+  }
+
+  @Override
+  public void updateAdoptRequest(AdoptRequest adoptRequest) throws RemoteException {
+    dataAccess.updateAdoptRequest(adoptRequest);
   }
 }

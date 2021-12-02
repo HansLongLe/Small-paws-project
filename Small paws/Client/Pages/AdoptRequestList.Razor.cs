@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Client.Authentication;
 using Client.Model;
 using Client.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+
 namespace Client.Pages
 {
     public class AdoptRequestListRazor : ComponentBase
     {
         protected IList<AdoptRequest> AdoptRequests{ get; set; }
         [Inject] protected IAnimalService AnimalService { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
+        [Inject] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
         protected string [] StatusText;
 
@@ -35,14 +40,22 @@ namespace Client.Pages
             }
         }
 
-        protected async Task AcceptRequest()
+        protected async Task AcceptRequest(AdoptRequest adoptRequest)
         {
-            
+            adoptRequest.Approved = true;
+            adoptRequest.VeterinarianId = 
+                ((CustomAuthenticationStateProvider) AuthenticationStateProvider).GetCachedUser().Id;
+            await AnimalService.UpdateAdoptRequest(adoptRequest);
+            NavigationManager.NavigateTo("AdoptRequestList");
         }
 
-        protected async Task RejectRequest()
+        protected async Task RejectRequest(AdoptRequest adoptRequest)
         {
-            
+            adoptRequest.Approved = false;
+            adoptRequest.VeterinarianId = 
+                ((CustomAuthenticationStateProvider) AuthenticationStateProvider).GetCachedUser().Id;
+            await AnimalService.UpdateAdoptRequest(adoptRequest);
+            NavigationManager.NavigateTo("AdoptRequestList");
         }
 
 

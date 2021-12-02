@@ -70,18 +70,23 @@ public class ClientRMIImpl extends UnicastRemoteObject implements ClientRMI
   }
 
   @Override
-  public Animal updateAnimal(Animal animal) throws RemoteException {
-    return server.updateAnimal(animal);
+  public void updateAnimal(Animal animal) throws RemoteException {
+
   }
 
   @Override
   public void newAdoptRequest(AdoptRequest adoptRequest) throws RemoteException {
-    server.newAdoptRequest(adoptRequest);
+
   }
 
   @Override
   public List<AdoptRequest> getAdoptRequests() throws RemoteException {
     return server.getAdoptRequests();
+  }
+
+  @Override
+  public void updateAdoptRequest(AdoptRequest adoptRequest) throws RemoteException {
+
   }
 
 }

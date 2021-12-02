@@ -17,8 +17,9 @@ public interface Server extends Remote
   List<EndUser> getAccounts() throws RemoteException;
   void addAnimal(Animal animal) throws RemoteException;
   List<Animal> getAnimals() throws RemoteException;
-  Animal updateAnimal(Animal animal) throws RemoteException;
+  void updateAnimal(Animal animal) throws RemoteException;
   void newAdoptRequest(AdoptRequest adoptRequest) throws RemoteException;
   List<AdoptRequest> getAdoptRequests() throws RemoteException;
+  void updateAdoptRequest(AdoptRequest adoptRequest) throws RemoteException;
 
 }

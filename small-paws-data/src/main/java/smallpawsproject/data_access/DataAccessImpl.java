@@ -47,8 +47,8 @@ public class DataAccessImpl implements DataAccess
   }
 
   @Override
-  public Animal updateAnimal(Animal animal) {
-    return serviceFactory.getAnimalService().updateAnimal(animal);
+  public void updateAnimal(Animal animal) {
+    serviceFactory.getAnimalService().updateAnimal(animal);
   }
 
   @Override
@@ -60,4 +60,10 @@ public class DataAccessImpl implements DataAccess
   public List<AdoptRequest> getAdoptRequests() {
     return serviceFactory.getAnimalService().getAdoptRequests();
   }
+
+  @Override
+  public void updateAdoptRequest(AdoptRequest adoptRequest) {
+    serviceFactory.getAnimalService().updateAdoptRequest(adoptRequest);
+  }
+
 }

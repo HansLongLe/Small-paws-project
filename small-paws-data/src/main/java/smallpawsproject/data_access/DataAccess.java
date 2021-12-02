@@ -14,7 +14,8 @@ public interface DataAccess
   List<Animal> getAnimals();
   List<EndUser> getUsers();
   void addAnimal(Animal animal);
-  Animal updateAnimal(Animal animal);
+  void updateAnimal(Animal animal);
   void newAdoptRequest(AdoptRequest adoptRequest);
   List<AdoptRequest> getAdoptRequests();
+  void updateAdoptRequest(AdoptRequest adoptRequest);
 }

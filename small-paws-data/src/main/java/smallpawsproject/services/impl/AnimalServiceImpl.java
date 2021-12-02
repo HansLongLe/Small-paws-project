@@ -27,13 +27,10 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public Animal updateAnimal(Animal animal) {
+    public void updateAnimal(Animal animal) {
         Animal temp = animalRepository.getById(animal.getId());
         temp.set(animal.getPicture(),animal.getAge(), animal.getDescription(), animal.isWashed(), animal.isFed(), animal.isVaccinated());
         animalRepository.save(temp);
-        return temp;
-
-
     }
 
     @Override
@@ -44,5 +41,12 @@ public class AnimalServiceImpl implements AnimalService {
     @Override
     public List<AdoptRequest> getAdoptRequests() {
         return adoptRequestRepository.findAll();
+    }
+
+    @Override
+    public void updateAdoptRequest(AdoptRequest adoptRequest){
+        AdoptRequest temp = adoptRequestRepository.getById(adoptRequest.getRequestId());
+        temp.setApproved(adoptRequest.isApproved());
+        adoptRequestRepository.save(temp);
     }
 }

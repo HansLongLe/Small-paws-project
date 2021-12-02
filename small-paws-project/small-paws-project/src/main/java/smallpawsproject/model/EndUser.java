@@ -1,6 +1,7 @@
 package smallpawsproject.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,7 +35,7 @@ public EndUser(){}
   }
 
 
-  public EndUser(int Id, String userName, String password, String email, String role)
+  public EndUser(@JsonProperty("id") int Id, String userName, String password, String email, String role)
   {
     this.role = role;
     userId = Id;

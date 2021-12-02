@@ -8,7 +8,8 @@ import java.util.List;
 public interface AnimalService {
     void addAnimal(Animal animal);
     List<Animal> getAnimals();
-    Animal updateAnimal(Animal animal);
+    void updateAnimal(Animal animal);
     void newAdoptRequest(AdoptRequest adoptRequest);
     List<AdoptRequest> getAdoptRequests();
+    void updateAdoptRequest(AdoptRequest adoptRequest);
 }

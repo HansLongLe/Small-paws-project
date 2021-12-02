@@ -2,14 +2,18 @@ package smallpawsproject.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import smallpawsproject.repositories.UsersRepository;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Date;
 
+@Transactional
+@DynamicUpdate
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"userId", "animalId"})})
 public class AdoptRequest implements Serializable {
@@ -28,9 +32,7 @@ public class AdoptRequest implements Serializable {
     private int veterinarianId;
     private Boolean approved;
 
-    public AdoptRequest(){
-
-    }
+    public AdoptRequest(){}
 
     @JsonCreator
     public AdoptRequest(@JsonProperty("requestId") int requestId, @JsonProperty("userId") int userId, @JsonProperty("animalId") int animalId, @JsonProperty("date") Date date, @JsonProperty("animalType") String animalType,
