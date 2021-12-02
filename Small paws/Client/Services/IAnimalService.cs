@@ -12,5 +12,6 @@ namespace Client.Services
         Task AdoptAnimal(AdoptRequest adoptRequest);
         
         Task<IList<AdoptRequest>> GetAdoptRequestsAsync();
+        Task UpdateAdoptRequest(AdoptRequest adoptRequest);
     }
 }

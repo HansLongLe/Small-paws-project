@@ -47,27 +47,37 @@ namespace Client.Services
 
         public async Task UpdateAnimal(Animal newAnimal)
         {
-            Console.WriteLine(newAnimal.Id + "  Animal Id here!!!");
             var animalAsJson = JsonSerializer.Serialize(newAnimal);
             HttpContent httpContent = new StringContent(
                 animalAsJson,
                 Encoding.UTF8,
                 "application/json");
+            Console.WriteLine(animalAsJson);
             await _httpClient.PatchAsync(Uri + "/new_information", httpContent);
-            // if (!responseMessage.IsSuccessStatusCode)
-            // {
-            //     throw new Exception($"Error, {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-            // } 
+        }
+        
+        public async Task UpdateAdoptRequest(AdoptRequest adoptRequest)
+        {
+            
+            var requestAsJson = JsonSerializer.Serialize(adoptRequest);
+            HttpContent httpContent = new StringContent(
+                requestAsJson,
+                Encoding.UTF8,
+                "application/json");
+            Console.WriteLine(requestAsJson);
+            await _httpClient.PatchAsync(Uri + "/adoptRequestStatus", httpContent);
         }
 
         public async Task AdoptAnimal(AdoptRequest adoptRequest)
         {
+            
             var adoptRequestAsJson = JsonSerializer.Serialize(adoptRequest);
             HttpContent httpContent = new StringContent(
                 adoptRequestAsJson,
                 Encoding.UTF8,
                 "application/json");
             var responseMessage = await _httpClient.PostAsync(Uri + "/adoptRequest", httpContent);
+            Console.WriteLine(adoptRequestAsJson);
             if (!responseMessage.IsSuccessStatusCode)
             {
                 throw new Exception($"Error, {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
@@ -85,6 +95,7 @@ namespace Client.Services
             var message = await responseMessage.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<List<AdoptRequest>>(message);
             return result;
-        }   
+        }
+
     }
 }

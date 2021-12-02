@@ -15,7 +15,6 @@ namespace Client.Model
         public string Email { get; set; }
         [JsonPropertyName("role")]
         public string Role { get; set; }
-
-        //public string Email { get; set; }
+        
     }
 }
