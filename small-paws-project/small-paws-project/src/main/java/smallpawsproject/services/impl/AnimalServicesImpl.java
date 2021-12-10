@@ -21,13 +21,13 @@ public class AnimalServicesImpl implements AnimalServices
 {
 
   @Autowired
-  private final ClientFactory clientFactory;
+  private  ClientFactory clientFactory;
 
-  private final ClientRMI client;
+  private  ClientRMI client;
 
-  public AnimalServicesImpl(ClientFactory clientFactory) {
+  public AnimalServicesImpl() {
 
-    this.clientFactory = clientFactory;
+    clientFactory = new ClientFactory();
     client = clientFactory.getClient();
 
     try {
@@ -40,6 +40,8 @@ public class AnimalServicesImpl implements AnimalServices
 
   @Override public void AddAnimal(Animal animal)
   {
+    animal.setHealthNotes("Nothing to note about the animal's health");
+
     try
     {
       client.addAnimal(animal);
@@ -79,10 +81,12 @@ public class AnimalServicesImpl implements AnimalServices
        jsonObject.put("picture", animal.getPicture());
        jsonObject.put("animalType", animal.getAnimalType());
        jsonObject.put("age", animal.getAge());
+       jsonObject.put("sex", animal.getSex());
        jsonObject.put("description", animal.getDescription());
        jsonObject.put("washed", animal.isWashed());
        jsonObject.put("fed", animal.isFed());
        jsonObject.put("vaccinated", animal.isVaccinated());
+       jsonObject.put("healthNotes", animal.getHealthNotes());
        animalsAsJson.add(jsonObject);
       }
 

@@ -34,14 +34,14 @@ import java.io.File;
 public class PetOwnerServiceImpl implements PetOwnerService
 {
   @Autowired
-  private final ClientFactory clientFactory;
+  private  ClientFactory clientFactory;
 
-  private final ClientRMI client;
+  private  ClientRMI client;
   private List<PetOwner> petOwners;
 
 
-  public PetOwnerServiceImpl (ClientFactory clientFactory){
-    this.clientFactory = clientFactory;
+  public PetOwnerServiceImpl (){
+    this.clientFactory = new ClientFactory();
     client = clientFactory.getClient();
     try
     {
@@ -55,8 +55,6 @@ public class PetOwnerServiceImpl implements PetOwnerService
     try
     {
      petOwners = client.getPetOwners();
-
-
 
     }
     catch (RemoteException e)
@@ -88,7 +86,7 @@ public class PetOwnerServiceImpl implements PetOwnerService
       e.printStackTrace();
     }
     System.out.println("Pet owner sent to server");
-
+    petOwners.add(petOwner);
     return HttpServletResponse.SC_CREATED;
   }
 
@@ -106,6 +104,26 @@ public class PetOwnerServiceImpl implements PetOwnerService
       }
     }
     return answer;
+  }
+
+  @Override
+  public PetOwner getUserById(int id) {
+    try {
+      petOwners = client.getPetOwners();
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+    System.out.println(id + "the correct id");
+    PetOwner temp = null;
+    for(PetOwner petOwner:petOwners){
+      if(petOwner.getUserId()==id){
+        temp = petOwner;
+        break;
+      }
+    }
+
+
+    return temp;
   }
 
 }

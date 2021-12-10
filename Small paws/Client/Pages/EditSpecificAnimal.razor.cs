@@ -25,12 +25,14 @@ namespace Client.Pages
         protected string ShownImage;
         protected string AnimalType;
         protected int? Age;
+        protected string Sex;
         protected int? Id;
         protected bool Washed;
         protected bool Fed;
         protected bool Vaccinated;
         private byte[] _picture;
         protected string Description;
+        protected string HealthNotes;
         // ReSharper disable once UnassignedField.Global
         protected string WashedIcon;
         // ReSharper disable once UnassignedField.Global
@@ -50,12 +52,14 @@ namespace Client.Pages
                 for (int i = 0; i < Animals.Count; i++)
                 {
                     Animal animal = Animals[i];
+                    Console.WriteLine(animal.Sex + ">>>>");
                     if (animal.Id == valueInt)
                     {
                         ShownImage = $"data:image/jpg;base64,{Convert.ToBase64String(animal.Picture)}";
                         AnimalType = animal.AnimalType;
                         Age = animal.Age;
                         Id = animal.Id;
+                        Sex = animal.Sex;
                         Washed = animal.Washed;
                         if (Washed)
                         {
@@ -89,6 +93,8 @@ namespace Client.Pages
                         }
                 
                         Description = animal.Description;
+                        HealthNotes = animal.healthNotes;
+                        _picture = animal.Picture;
                     }
                 }
 
@@ -150,14 +156,17 @@ namespace Client.Pages
             {
                 Id = (int) Id,
                 Description = Description,
+                healthNotes = HealthNotes,
                 Picture = _picture,
                 AnimalType = AnimalType,
+                Sex = Sex,
                 Age = (int) Age,
                 Washed = Washed,
                 Fed = Fed,
                 Vaccinated = Vaccinated
             };
             await AnimalService.UpdateAnimal(newAnimal);
+            NavigationManager.NavigateTo("/ViewAnimals");
         }
         
         // ReSharper disable once UnusedParameter.Local

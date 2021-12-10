@@ -16,7 +16,7 @@ namespace Client.Authentication
         private readonly IUserLogInService LogInService;
 
         private EndUser cachedUser;
-        
+
         public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserLogInService logInService)
         {
             this.jsRuntime = jsRuntime;
@@ -75,6 +75,12 @@ namespace Client.Authentication
             var user = new ClaimsPrincipal(new ClaimsIdentity());
             await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", "");
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
+        }
+
+        public EndUser getCachedUser()
+        {
+            // Console.WriteLine(cachedUser.Id +" id in authentication");
+            return cachedUser;
         }
 
         private ClaimsIdentity SetupClaimsForUser(EndUser endUser)

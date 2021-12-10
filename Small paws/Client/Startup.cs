@@ -1,6 +1,7 @@
 using System.Collections;
 using Client.Authentication;
 using Client.Data;
+using Client.Data.AdoptionRequest;
 using Client.Data.Registration;
 using Client.Data.Validation;
 using Client.Model;
@@ -29,9 +30,11 @@ namespace Client
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            
             services.AddSingleton<IAnimalService, CloudAnimalService>();
             services.AddSingleton<IUserLogInService, CloudUserLogInService>();
             services.AddSingleton<IUserCreateAccountService, CloudUserCreateAccountService>();
+            services.AddSingleton<IAdoptionRequestService, CloudAdoptionRequestsService>();
             services.AddSingleton<EndUser>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 

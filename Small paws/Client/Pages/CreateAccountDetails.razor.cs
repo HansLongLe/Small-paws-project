@@ -33,6 +33,9 @@ namespace Client.Pages
         protected string AvgIncomeError="";
         protected string AgeError="";
         protected string Error = "";
+        protected string firstNameError = "";
+        protected string lastNameError = "";
+        protected string familyStatusNameError = "";
 
         protected async Task LoadViewAnimals()
         {
@@ -56,7 +59,8 @@ namespace Client.Pages
                 JobTitle = JobTitle,
                 Id = (int) Id
             };
-            if (Age < 15 || Age > 130)
+            Console.WriteLine(petOwner.Id);
+            if (Age < 18 || Age > 130)
             {
                 AgeError = "Age is either too low or too high";
             }
@@ -69,10 +73,15 @@ namespace Client.Pages
                 IdError = "Id cannot be less than 4 digits or bigger than 9 digits, and it cannot start with 0";
                 
             }
+            else if (Id.ToString().Length < 4 || Id.ToString().Length > 9 || Id.ToString()[0] == 0)
+            {
+                IdError = "Id cannot be less than 4 digits or bigger than 9 digits, and it cannot start with 0";
+                
+            }
 
             else if (await UserCreateAccountService.CreateUserAsync(petOwner) == 201)
             {
-                NavigationManager.NavigateTo("ViewAnimals");
+                NavigationManager.NavigateTo("");
             }
             else
             {

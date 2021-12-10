@@ -13,6 +13,9 @@ namespace Client.Model
         [JsonPropertyName("age")]
         public int Age { get; set; }
         
+        [JsonPropertyName("sex")]
+        public string Sex { get; set; }
+        
         [JsonPropertyName("animalType")]
         public string AnimalType { get; init; }
         
@@ -27,5 +30,7 @@ namespace Client.Model
         
         [JsonPropertyName("vaccinated")]
         public bool Vaccinated { get; set; }
+
+        [JsonPropertyName("healthNotes")] public string healthNotes { get; set; }
     }
 }
