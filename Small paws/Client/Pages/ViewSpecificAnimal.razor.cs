@@ -32,6 +32,7 @@ namespace Client.Pages
         protected string ShownImage;
         protected string AnimalType;
         protected int? Age;
+        protected string Sex;
         protected int? Id;
         private bool _washed;
         private bool _fed;
@@ -62,6 +63,7 @@ namespace Client.Pages
                         ShownImage = $"data:image/jpg;base64,{Convert.ToBase64String(animal.Picture)}";
                         AnimalType = animal.AnimalType;
                         Age = animal.Age;
+                        Sex = animal.Sex;
                         Id = animal.Id;
                         _washed = animal.Washed;
                         if (_washed)

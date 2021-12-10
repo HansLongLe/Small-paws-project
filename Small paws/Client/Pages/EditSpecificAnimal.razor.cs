@@ -25,6 +25,7 @@ namespace Client.Pages
         protected string ShownImage;
         protected string AnimalType;
         protected int? Age;
+        protected string Sex;
         protected int? Id;
         protected bool Washed;
         protected bool Fed;
@@ -51,12 +52,14 @@ namespace Client.Pages
                 for (int i = 0; i < Animals.Count; i++)
                 {
                     Animal animal = Animals[i];
+                    Console.WriteLine(animal.Sex + ">>>>");
                     if (animal.Id == valueInt)
                     {
                         ShownImage = $"data:image/jpg;base64,{Convert.ToBase64String(animal.Picture)}";
                         AnimalType = animal.AnimalType;
                         Age = animal.Age;
                         Id = animal.Id;
+                        Sex = animal.Sex;
                         Washed = animal.Washed;
                         if (Washed)
                         {
@@ -156,6 +159,7 @@ namespace Client.Pages
                 healthNotes = HealthNotes,
                 Picture = _picture,
                 AnimalType = AnimalType,
+                Sex = Sex,
                 Age = (int) Age,
                 Washed = Washed,
                 Fed = Fed,
