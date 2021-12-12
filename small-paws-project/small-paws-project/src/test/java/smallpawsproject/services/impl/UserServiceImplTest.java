@@ -56,9 +56,9 @@ public class UserServiceImplTest {
 
     @Test
     void getUsersWhenOk() throws RemoteException {
-//        EndUser testUser = new EndUser("Vet", "vet", "vet@mail.com", "Veterinarian");
+        EndUser testUser = new EndUser("Vet", "vet", "vet@mail.com", "Veterinarian");
         List<EndUser> users = new ArrayList<>();
-//        users.add(testUser);
+        users.add(testUser);
         Mockito.when(clientRMI.getUsers()).thenReturn(users);//mocking the clientRMI to get the list of users from a mocked Server
         List<EndUser> gottenUsers = usersService.getUsers();
         assertTrue(usersService.getUsers().size()>0);
